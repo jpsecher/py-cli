@@ -1,0 +1,30 @@
+pipeline {
+  agent { docker { image 'python:3' } }
+  environment {
+    // HOME defaults to '/' for some reason.
+    HOME = "$WORKSPACE"
+    // Extract branch name.
+    BRANCH = GIT_BRANCH.substring(GIT_BRANCH.lastIndexOf('/') + 1, GIT_BRANCH.length())
+  }
+  stages {
+    stage('libs') {
+      steps {
+        sh 'python -m venv venv'
+        sh 'scripts/install-libs.sh'
+      }
+    }
+    stage('unit') {
+      steps {
+        sh 'scripts/test.sh'
+      }
+    }
+  }
+  post {
+    always {
+      junit(
+        allowEmptyResults: true,
+        testResults: '**/test-reports/*.xml'
+      )
+    }
+  }
+}

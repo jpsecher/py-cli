@@ -10,14 +10,25 @@ This is a trivial Python CLI application that includes
 
 ### Linux/MacOS
 
+	$ scripts/test.sh -v
+
+Or manually
+
 	$ source venv/bin/activate
-	$ pytest -v --cov
+	$ pytest -v
+
+### Windows
+
+    PS> scripts\test.bat
 
 ## One-time setup
 
 ### Linux/MacOS
 
 	$ python3 -m venv venv
-	$ source venv/bin/activate
-	$ pip install -U pip
-	$ pip install -r requirements-dev.txt
+	$ scripts/install-libs.sh
+
+### Windows
+
+    PS> python -m venv venv
+    PS> scripts\install-libs.bat
