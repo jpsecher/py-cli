@@ -1,7 +1,20 @@
-{ "folders":
+{ "build_systems":
+  [ { "name": "py-cli"
+    , "cmd": ["venv/bin/py.test", "-v", "--cov"]
+    , "working_dir": "${project_path}/.."
+    , "file_regex": "^(.+):([0-9]+): .*$"
+    , "quiet": true
+    }
+  ]
+, "folders":
   [ { "path": ".."
+    , "file_exclude_patterns":
+      [ ".coverage"
+      ]
     , "folder_exclude_patterns":
-      [ "venv"
+      [ ".pytest_cache"
+      , "__pycache__"
+      , "venv"
       ]
     }
   ]
