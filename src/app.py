@@ -3,6 +3,12 @@ from constants import SUCCESS, APP_VERSION, APP_DESCRIPTION
 from typing import Sequence
 import sys
 
+#
+# This is the template for your application.
+#
+# Expand app.py and constants.py, add new files as needed.
+#
+
 
 class App(CLI):
     def __init__(self, args: Sequence[str]):
@@ -10,13 +16,13 @@ class App(CLI):
         self.parse_args()
         self._check_args()
 
-    def run(self):
+    def run(self) -> None:
         if self._args.verbose > 0:
             print(f'{APP_DESCRIPTION} v{APP_VERSION}')
         if self._args.version:
             print(APP_VERSION)
 
-    def _check_args(self):
+    def _check_args(self) -> None:
         needed = (self._args.version, )
         if not any(needed):
             self._parser.print_help()

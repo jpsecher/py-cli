@@ -13,6 +13,11 @@ pipeline {
         sh 'scripts/install-libs.sh'
       }
     }
+    stage('types') {
+      steps {
+        sh 'scripts/typecheck.sh'
+      }
+    }
     stage('unit') {
       steps {
         sh 'scripts/test.sh'

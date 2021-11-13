@@ -4,6 +4,11 @@
     , "working_dir": "${project_path}/.."
     , "file_regex": "^(.+):([0-9]+): .*$"
     , "quiet": true
+    , "variants":
+      [ { "name": "typecheck"
+        , "cmd": ["venv/bin/mypy", "--strict", "src"]
+        }
+      ]
     }
   ]
 , "folders":
@@ -12,7 +17,8 @@
       [ ".coverage"
       ]
     , "folder_exclude_patterns":
-      [ ".pytest_cache"
+      [ ".mypy_cache"
+      , ".pytest_cache"
       , "__pycache__"
       , "test-reports"
       , "venv"
