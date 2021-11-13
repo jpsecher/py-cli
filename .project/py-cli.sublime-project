@@ -1,6 +1,6 @@
 { "build_systems":
   [ { "name": "py-cli"
-    , "cmd": ["venv/bin/py.test", "-v", "--cov"]
+    , "cmd": ["venv/bin/py.test", "-v"]
     , "working_dir": "${project_path}/.."
     , "file_regex": "^(.+):([0-9]+): .*$"
     , "quiet": true

@@ -6,6 +6,11 @@ This is a trivial Python CLI application that includes
 - Logging
 - Testing
 
+## TODO:
+
+- mypy
+- coverage
+
 ## Testing
 
 ### Linux/MacOS
@@ -15,7 +20,7 @@ This is a trivial Python CLI application that includes
 Or manually
 
 	$ source venv/bin/activate
-	$ pytest -v
+	$ pytest --cov --cov-report=term-missing
 
 ### Windows
 
