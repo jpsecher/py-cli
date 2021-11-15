@@ -1,11 +1,18 @@
 from app import App
+from constants import APP_VERSION
 import pytest
 import re
-from os import path
+#from os import path
 
 
 def test_unknown_arg(capfd):
-    pass
+    # -----------------------------------------------------------------------
+    with pytest.raises(SystemExit):
+        App(['--unknown-arg'])
+    # -----------------------------------------------------------------------
+    out, err = capfd.readouterr()
+    assert not out
+    assert re.findall('usage:', err)
 
 
 def test_no_args_prints_usage(capfd):
@@ -24,7 +31,7 @@ def test_version(capfd):
     # -----------------------------------------------------------------------
     out, err = capfd.readouterr()
     assert not err
-    assert out == '0.1\n'
+    assert out == f'{APP_VERSION}\n'
 
 
 def test_verbose_on(capfd):
